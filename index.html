@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mossling: park your work, pick it up exactly where you left it</title>
+  <meta name="description" content="A menu bar app for developers on macOS. Press ⌘⇧P and Mossling puts your code, terminals, containers and local database to sleep, then wakes everything up right where you left it.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F4EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1C1B18" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Mossling: park your work">
+  <meta property="og:description" content="Pick it up exactly where you left it. A menu bar app for developers on macOS.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/mossling-icon-app.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/fraunces-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<!-- Waitlist: keep "closed" until /privacy is published. See landing/README.md. -->
+<body data-waitlist="closed">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="nav-logo" href="#top" aria-label="Mossling home">
+        <img src="assets/mossling-wordmark-dark.svg" alt="Mossling" width="96" height="30">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <span class="nav-status" data-when="closed">Waitlist opens soon</span>
+        <span class="nav-status nav-status-open" data-when="open"><span class="dot" aria-hidden="true"></span>Waitlist open</span>
+        <a class="btn btn-nav" href="#join" data-when="open">Get early access <span aria-hidden="true">→</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <p class="eyebrow-pill">A menu bar app for developers on macOS, coming early 2027</p>
+      <h1>Park your work.<span class="h1-sub">Pick it up exactly where you left it.</span></h1>
+      <p class="lede">Press <kbd>⌘⇧P</kbd> and Mossling puts your code, terminals, containers and local database to sleep. Handle the interruption on a clean desk, then wake everything up right where you left it.</p>
+
+      <div class="waitlist" data-form-id="hero">
+        <p class="waitlist-soon" data-when="closed">Waitlist opens soon</p>
+        <form class="waitlist-form" data-when="open" action="https://buttondown.com/api/emails/embed-subscribe/mossling" method="post">
+          <div class="waitlist-row">
+            <label class="visually-hidden" for="email-hero">Your email</label>
+            <input id="email-hero" type="email" name="email" placeholder="you@company.dev" autocomplete="email" required aria-describedby="error-hero">
+            <input type="hidden" name="tag" value="waitlist">
+            <button class="btn btn-primary" type="submit">Get early access</button>
+          </div>
+          <p class="form-error" id="error-hero" role="alert" hidden></p>
+        </form>
+        <p class="form-success" role="status" tabindex="-1" hidden>You're on the list. Check your inbox to confirm.</p>
+      </div>
+      <p class="hero-note">Free plan included · Native Mac app · Your code never leaves your Mac</p>
+
+      <figure class="hero-figure">
+        <div class="desktop" aria-hidden="true">
+          <div class="desktop-menubar">
+            <span><b>Ghostty</b> Shell Edit View Window</span>
+            <span class="menubar-right"><span class="menubar-icon"><img src="assets/mossling-icon-light.svg" alt="" width="14" height="14"> 2</span> Fri 4:47 PM</span>
+          </div>
+          <div class="desktop-body">
+            <div class="terminal">
+              <div class="terminal-bar"><i></i><i></i><i></i></div>
+              <pre><span class="t-muted">~/work/shop (feature/payment-refactor)</span>
+$ npm test -- webhook
+<span class="t-red">× retries with exponential backoff</span>
+<span class="t-muted">expected 3 attempts, received 2</span>
+$ docker compose ps
+<span class="t-green">api, worker, postgres, redis running</span>
+$</pre>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><b>Mossling</b><span class="badge">Awake</span></div>
+              <p class="panel-label">Current task</p>
+              <div class="panel-card">
+                <b>payment-refactor</b>
+                <span class="muted">14 files changed, 1 test failing</span>
+                <span class="chips"><span>Code</span><span>3 terminals</span><span>4 containers</span><span>Postgres</span></span>
+              </div>
+              <div class="panel-park">Park this task <span>⌘⇧P</span></div>
+              <p class="panel-label">On the shelf</p>
+              <div class="panel-row"><span>pr-review-checkout</span><span class="muted">2 days ago</span></div>
+              <div class="panel-row"><span>spike-search-ranking</span><span class="muted">last week</span></div>
+              <div class="panel-foot"><span>Shelf 2 of 2, Free</span><span>Settings…</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="caption">Fig. 1, Mossling napping on your Mac. It lives in your menu bar, one shortcut from anything.</figcaption>
+      </figure>
+    </section>
+
+    <section class="problem">
+      <h2>“Prod is down. Can you take a look?”</h2>
+      <p class="section-lede">The fix takes ten minutes. Rebuilding your desk afterwards takes the rest of the afternoon.</p>
+      <div class="compare">
+        <div class="compare-card compare-before">
+          <p class="card-label">Today, by hand</p>
+          <ol>
+            <li><code>git stash</code> and hope</li>
+            <li>Write down which containers were running</li>
+            <li><code>docker compose down</code></li>
+            <li>Dump the test data you spent an hour seeding</li>
+            <li>Close the tabs, switch branch, fix the bug</li>
+            <li>Undo all of it in reverse</li>
+            <li>Stare at the code: where was I?</li>
+          </ol>
+        </div>
+        <div class="compare-card compare-after">
+          <p class="card-label">With Mossling</p>
+          <p class="big-steps">Press <kbd>⌘⇧P</kbd><br>Fix the bug.<br>Pick it from the shelf.</p>
+          <p class="caption">Seven chores become one shortcut.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="how-it-works">
+      <p class="eyebrow-hand">How it works</p>
+      <h2>Park. Switch. Resume.</h2>
+      <div class="tabs" role="tablist" aria-label="Steps" hidden>
+        <button role="tab" id="tab-park" aria-controls="step-park" aria-selected="true">Park</button>
+        <button role="tab" id="tab-switch" aria-controls="step-switch" aria-selected="false" tabindex="-1">Switch</button>
+        <button role="tab" id="tab-resume" aria-controls="step-resume" aria-selected="false" tabindex="-1">Resume</button>
+      </div>
+      <div class="steps">
+        <div class="step" id="step-park" role="tabpanel" aria-labelledby="tab-park">
+          <div class="step-visual">
+            <div class="mini-card" aria-hidden="true">
+              <b>Parking payment-refactor</b>
+              <span class="muted small">Backup taken. Nothing is deleted.</span>
+              <ul>
+                <li>Worktree and uncommitted changes <span class="ok">✓</span></li>
+                <li>3 terminal tabs <span class="ok">✓</span></li>
+                <li>4 containers <span class="ok">✓</span></li>
+                <li>Postgres snapshot <span class="ok">✓</span></li>
+                <li>“Where was I?” note <span class="muted">writing…</span></li>
+              </ul>
+            </div>
+          </div>
+          <h3>1. Press <kbd>⌘⇧P</kbd></h3>
+          <p>Mossling backs up first, then saves every layer of the task and tucks it onto the shelf.</p>
+        </div>
+        <div class="step" id="step-switch" role="tabpanel" aria-labelledby="tab-switch">
+          <div class="step-visual">
+            <div class="mini-card" aria-hidden="true">
+              <b>payment-refactor is parked</b>
+              <span class="muted small">Your desk is clean: on main, no containers running, editor closed.</span>
+              <span class="mini-actions"><span class="mini-btn">Undo</span><span class="mini-btn mini-btn-primary">Open shelf</span></span>
+            </div>
+          </div>
+          <h3>2. Fix the bug</h3>
+          <p>Your desk is clean: on main, no containers running, editor closed. Changed your mind? Undo puts everything back.</p>
+        </div>
+        <div class="step" id="step-resume" role="tabpanel" aria-labelledby="tab-resume">
+          <div class="step-visual">
+            <div class="mini-card" aria-hidden="true">
+              <b>payment-refactor</b>
+              <span class="note-hand">Where was I?</span>
+              <span class="small">You were fixing the webhook retry logic. The backoff test expects 3 attempts and gets 2. Last edit: <code>retry.ts:48</code>.</span>
+              <span class="mini-actions"><span class="mini-btn mini-btn-primary">Resume task ⏎</span></span>
+            </div>
+          </div>
+          <h3>3. Pick it from the shelf</h3>
+          <p>Press <kbd>⌘⇧S</kbd>, choose the task and resume. If your current desk has changes, Mossling parks it first so nothing is lost.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="uses">
+      <h2>Made for interruptions.</h2>
+      <div class="columns">
+        <div><h3>Hotfixes and incidents</h3><p>Drop everything without dropping anything.</p></div>
+        <div><h3>Code reviews</h3><p>Run a teammate’s branch locally, then come straight back to yours.</p></div>
+        <div><h3>On-call weeks</h3><p>Every page becomes a short detour, not a lost day.</p></div>
+        <div><h3>Freelancers</h3><p>One shelf slot per client. Switch clients without rebuilding your setup.</p></div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <h2>Not just your code.<br>Everything around it.</h2>
+      <div class="bento">
+        <article class="tile tile-wide">
+          <p class="card-label">Code</p>
+          <h3>Your branch gets its own worktree. Uncommitted changes included.</h3>
+          <pre class="code-box">M src/payments/retry.ts
+M src/payments/webhook.ts
+A test/retry.backoff.test.ts
+<span class="muted">+ 11 more</span></pre>
+        </article>
+        <article class="tile">
+          <p class="card-label">Terminals</p>
+          <h3>Every tab, folder and history.</h3>
+          <p class="tabs-chips" aria-label="Example terminal tabs"><span>api</span><span>worker</span><span>tests</span></p>
+        </article>
+        <article class="tile">
+          <p class="card-label">Containers and databases <span class="pro">Pro</span></p>
+          <h3>Your test data, frozen in place.</h3>
+          <p>Docker Compose services plus snapshots of your Postgres and Redis data, taken right before you park.</p>
+        </article>
+        <article class="tile">
+          <p class="card-label">Editor</p>
+          <h3>Open files, right where they were.</h3>
+          <p>VS Code and Cursor at launch.</p>
+        </article>
+        <article class="tile">
+          <p class="card-label">Where was I? <span class="pro">Pro</span></p>
+          <h3>A note from past you.</h3>
+          <p>Written from your diff and last commands, with your own API key.</p>
+        </article>
+        <article class="tile tile-full tile-dark">
+          <p class="card-label">Command line</p>
+          <h3>Prefer the terminal? So does Mossling.</h3>
+          <pre>$ mossling park "payment refactor"
+$ mossling list
+$ mossling resume payment-refactor</pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="why">
+      <p class="eyebrow-hand">Why a tardigrade</p>
+      <h2>Built to survive anything.<br>Especially your work.</h2>
+      <p class="section-lede">Tardigrades can be frozen, dried out and sent to space, then wake up as if nothing happened. Mossling treats your work the same way.</p>
+      <div class="columns columns-plain">
+        <div><h3>Never deletes anything</h3><p>No resets, no cleans, no force pushes.</p></div>
+        <div><h3>A backup before every park</h3><p>Roll back in one step if anything goes wrong.</p></div>
+        <div><h3>Dry run first</h3><p>See exactly what will happen before it does.</p></div>
+        <div><h3>Stays on your Mac</h3><p>Your code and data never leave your machine.</p></div>
+      </div>
+    </section>
+
+    <section class="maker">
+      <div class="maker-card">
+        <p class="eyebrow-hand">A note from the maker</p>
+        <h2>I built the tool I kept wishing I had.</h2>
+        <p>I’m Serhan, an indie developer. I lost too many afternoons rebuilding my desk after a ten-minute hotfix, so I started building Mossling.</p>
+        <p>Join the waitlist and reply to the welcome email with the tools you use. Early members decide which ones get supported next.</p>
+        <p class="maker-sign">Serhan</p>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <h2>Free to start.</h2>
+      <p class="section-lede">Upgrade when you want containers, databases and notes.</p>
+      <div class="plans">
+        <div class="plan">
+          <p class="card-label">Free</p>
+          <p class="price">$0</p>
+          <ul>
+            <li>2 parked tasks</li>
+            <li>Code, terminals and editor</li>
+            <li>Command line tool</li>
+          </ul>
+        </div>
+        <div class="plan plan-pro">
+          <p class="card-label plan-head">Pro <span class="note-hand">waitlist members get early-bird pricing</span></p>
+          <p class="price price-tba">Pricing announced at launch</p>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Unlimited parked tasks</li>
+            <li>Containers and database snapshots</li>
+            <li>“Where was I?” notes</li>
+            <li>Jira and Linear auto-park</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2>Questions from the field</h2>
+      <details>
+        <summary>Does Mossling touch my code?</summary>
+        <p>It moves your work into a separate git worktree and backs it up first. It never deletes, resets or force-pushes anything.</p>
+      </details>
+      <details>
+        <summary>What if something fails halfway through a park?</summary>
+        <p>Mossling stops and leaves your desk as it was. The backup it took first lets you roll back in one step.</p>
+      </details>
+      <details>
+        <summary>Which tools does it support?</summary>
+        <p>At launch: Ghostty, VS Code, Cursor and Docker Compose with Postgres and Redis. iTerm2 and more come next, prioritized by what waitlist members use.</p>
+      </details>
+      <details>
+        <summary>Will snapshots fill up my disk?</summary>
+        <p>Mossling checks free space before every park. If there isn't enough room, it stops and tells you before touching anything.</p>
+      </details>
+      <details>
+        <summary>Is anything uploaded?</summary>
+        <p>No. Everything stays on your Mac. The optional AI note calls the model with your own API key.</p>
+      </details>
+      <details>
+        <summary>Why isn’t it on the Mac App Store?</summary>
+        <p>The App Store sandbox blocks access to terminals and Docker. Mossling ships as a signed, notarized download.</p>
+      </details>
+    </section>
+
+    <section class="cta" id="join">
+      <h2>Your work deserves a good nap.</h2>
+      <p class="section-lede">Get early access and the early-bird price. One email at launch, nothing else.</p>
+      <div class="waitlist" data-form-id="footer">
+        <p class="waitlist-soon" data-when="closed">Waitlist opens soon</p>
+        <form class="waitlist-form" data-when="open" action="https://buttondown.com/api/emails/embed-subscribe/mossling" method="post">
+          <div class="waitlist-row">
+            <label class="visually-hidden" for="email-footer">Your email</label>
+            <input id="email-footer" type="email" name="email" placeholder="you@company.dev" autocomplete="email" required aria-describedby="error-footer">
+            <input type="hidden" name="tag" value="waitlist">
+            <button class="btn btn-primary" type="submit">Get early access</button>
+          </div>
+          <p class="form-error" id="error-footer" role="alert" hidden></p>
+        </form>
+        <p class="form-success" role="status" tabindex="-1" hidden>You're on the list. Check your inbox to confirm.</p>
+        <p class="form-note" data-when="open">We only use your email for Mossling launch news. See our <a href="/privacy">Privacy Policy</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <picture>
+          <source srcset="assets/mossling-wordmark-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="assets/mossling-wordmark-light.svg" alt="Mossling" width="96" height="30">
+        </picture>
+        <p>Park your work. Pick it up exactly where you left it. A menu bar app for developers on macOS.</p>
+        <p>A product of <a href="https://runivoxlabs.com">Runivox Labs</a></p>
+      </div>
+      <div>
+        <h2 class="footer-head">Product</h2>
+        <ul>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-head">Company</h2>
+        <ul>
+          <li><a href="https://runivoxlabs.com">Runivox Labs</a></li>
+        </ul>
+      </div>
+      <div data-when="open">
+        <h2 class="footer-head">Legal</h2>
+        <ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Runivox LTD. All rights reserved.</span>
+      <span>20 Wenlock Road, London N1 7GU, United Kingdom</span>
+    </div>
+  </footer>
+</body>
+</html>
