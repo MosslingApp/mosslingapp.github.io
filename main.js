@@ -1,5 +1,34 @@
 "use strict";
 
+document.documentElement.classList.add("js");
+
+// Mascots: pause off-screen animations; wake the final CTA mascot once it is 40% visible.
+// The motion itself is CSS-only and gated by prefers-reduced-motion in styles.css.
+(function setUpMascots() {
+  const waking = document.querySelectorAll(".mascot-wake-on-view");
+  if (!("IntersectionObserver" in window)) {
+    waking.forEach((m) => m.classList.add("is-awake"));
+    return;
+  }
+
+  const pauser = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.target.classList.toggle("m-paused", !e.isIntersecting));
+  });
+  document.querySelectorAll("svg.mascot").forEach((m) => pauser.observe(m));
+
+  const waker = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("is-awake");
+        observer.unobserve(e.target);
+      });
+    },
+    { threshold: 0.4 },
+  );
+  waking.forEach((m) => waker.observe(m));
+})();
+
 // "How it works" tabs. Without JS all three steps stay visible.
 (function setUpTabs() {
   const tablist = document.querySelector(".tabs");
@@ -65,8 +94,8 @@
       event.preventDefault();
       input.value = input.value.trim();
 
-      if (input.value === "") return showError("Enter your email address.");
-      if (!input.checkValidity()) return showError("That doesn't look like an email address.");
+      if (input.value === "") return showError("Enter your email first.");
+      if (!input.checkValidity()) return showError("That email doesn’t look right. Check it and try again.");
       clearError();
 
       button.disabled = true;
